@@ -9,7 +9,6 @@ import { useAvailableVariablesInWorkflowStep } from '@/workflow/search-variables
 import { StepOutputSchema } from '@/workflow/search-variables/types/StepOutputSchema';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Editor } from '@tiptap/react';
 import { useState } from 'react';
 import { IconVariablePlus } from 'twenty-ui';
 
@@ -29,11 +28,11 @@ const StyledDropdownVariableButtonContainer = styled(
 
 const SearchVariablesDropdown = ({
   inputId,
-  editor,
+  insertVariableTag,
   disabled,
 }: {
   inputId: string;
-  editor: Editor;
+  insertVariableTag: (variable: string) => void;
   disabled?: boolean;
 }) => {
   const theme = useTheme();
@@ -46,10 +45,6 @@ const SearchVariablesDropdown = ({
   const [selectedStep, setSelectedStep] = useState<
     StepOutputSchema | undefined
   >(undefined);
-
-  const insertVariableTag = (variable: string) => {
-    editor.commands.insertVariableTag(variable);
-  };
 
   const handleStepSelect = (stepId: string) => {
     setSelectedStep(
