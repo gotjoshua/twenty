@@ -109,9 +109,7 @@ export const RecordTable = ({
               {!hasRecordGroups ? (
                 <RecordTableNoRecordGroupBody />
               ) : (
-                <RecordTableRecordGroupsBody
-                  objectNameSingular={objectNameSingular}
-                />
+                <RecordTableRecordGroupsBody />
               )}
               <RecordTableStickyEffect />
             </StyledTable>
